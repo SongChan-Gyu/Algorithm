@@ -22,25 +22,32 @@ public class pb8104 {
             int c = 1;
             int s = 0;
             int h = 0;
-            for(int i=c ; i<= K*N ; i=c) {
-            	sum += c;
-            	
-            	if(s==0) {
-            		h= h+2;
-            		c= h*K;
-            		s=1;
-            	}
-            	else {
-            		s=0;
-            		c+=1;
-            	}
-            }
-            
-            System.out.print("#"+test_case);
-            for(int j = 0; j<K; j++)
-            	System.out.print(" "+sum);
-            System.out.println();
-	    	
+            	for(int i=c ; i<= K*N ; i=c) {
+                	sum += c;
+                	
+                	if(s==0) {
+                		h= h+2;
+                		c= h*K;
+                		s=1;
+                	}
+                	else {
+                		s=0;
+                		c+=1;
+                	}
+                }
+            	System.out.print("#"+test_case);
+                if(N%2==0) {   
+	                for(int j = 0; j<K; j++)
+	                	System.out.print(" "+sum);
+	                }
+                else {
+                	for(int j = 0; j<K; j++)
+                		System.out.print(" "+(sum+j));
+                		System.out.println();
+                }
+                System.out.println();
+                
+            	    	
 	    
 	    }
 	}
