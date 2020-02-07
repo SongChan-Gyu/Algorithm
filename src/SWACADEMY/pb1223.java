@@ -25,10 +25,32 @@ public class pb1223 {
 				else if(postfix.charAt(i)=='+') {
 					if(stack.empty())
 						stack.add('+');
-					else {
-						str.append(stack.pop());
-						stack.add('+');
+					else if(stack.peek()=='+') {
+						str.append('+');
 					}
+					else if(stack.peek()=='*') {
+						str.append(stack.pop());
+						if(stack.empty()) {
+							stack.add('+');
+						}
+						else if(stack.peek()=='+') {
+							str.append(stack.pop());
+							stack.add('+');
+						}
+						
+							
+					}
+				}
+				else if(postfix.charAt(i)=='*') {
+					if(stack.empty())
+						stack.add('*');
+					else if(stack.peek()=='*') {
+						str.append('*');
+					}
+					else if(stack.peek()=='+') {
+						stack.add('*');
+					}
+					
 				}
 			}
 			while(!stack.isEmpty())
@@ -43,6 +65,13 @@ public class pb1223 {
 						int temp = answer.pop();
 						int temp2 = answer.pop();
 						answer.add(temp+temp2);
+					}
+				}
+				else if(str.charAt(i)=='*') {
+					if(!answer.isEmpty()) {
+						int temp = answer.pop();
+						int temp2 = answer.pop();
+						answer.add(temp*temp2);
 					}
 				}
 			}
